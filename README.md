@@ -2,6 +2,8 @@
 
 > Frontend testing in practice — a progressive series of sample apps for hands-on testing at every level.
 
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
 ## What is this?
 
 A monorepo where each app is a realistic frontend project designed to be tested. The apps are ordered from simple to complex, covering every testing layer: pure logic, UI components, API integration, and full browser flows.
@@ -10,26 +12,26 @@ The twist: **the apps come without tests**. Writing them is the whole point.
 
 ## How it works
 
-| Who | Does what |
-|-----|-----------|
-| Claude | Scaffolds each sample app + writes a per-app README with testing hints |
-| Me | Writes all tests from scratch |
-| Claude (review) | Reviews test coverage, isolation, assertion quality, and naming |
+| Who             | Does what                                                              |
+| --------------- | ---------------------------------------------------------------------- |
+| Claude          | Scaffolds each sample app + writes a per-app README with testing hints |
+| Me              | Writes all tests from scratch                                          |
+| Claude (review) | Reviews test coverage, isolation, assertion quality, and naming        |
 
 ## Testing Levels
 
-| # | Level | Scope | Tools |
-|---|-------|-------|-------|
-| 1 | Unit | Pure functions, utilities, custom hooks | Vitest or Jest |
-| 2 | Component | Rendering, user events, accessibility | Testing Library + Vitest |
-| 3 | Integration | Network, API contracts, wired-up features | MSW + Vitest |
-| 4 | E2E | Full browser user flows | Playwright |
+| #   | Level       | Scope                                     | Tools                    |
+| --- | ----------- | ----------------------------------------- | ------------------------ |
+| 1   | Unit        | Pure functions, utilities, custom hooks   | Vitest or Jest           |
+| 2   | Component   | Rendering, user events, accessibility     | Testing Library + Vitest |
+| 3   | Integration | Network, API contracts, wired-up features | MSW + Vitest             |
+| 4   | E2E         | Full browser user flows                   | Playwright               |
 
 ## Apps
 
-| App | Level | Description |
-|-----|-------|-------------|
-| *(coming soon)* | | |
+| App             | Level | Description |
+| --------------- | ----- | ----------- |
+| _(coming soon)_ |       |             |
 
 Apps progress from framework-agnostic TypeScript → React components → API-integrated features → E2E flows. Each app's `README.md` explains what it does and what to test.
 

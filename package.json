@@ -3,14 +3,18 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "prepare": "husky"
+    "prepare": "husky",
+    "commit": "cz"
   },
   "private": true,
   "devDependencies": {
+    "@commitlint/cli": "^20.5.0",
+    "@commitlint/config-conventional": "^20.5.0",
     "@nx/js": "22.6.5",
     "@swc-node/register": "~1.11.1",
     "@swc/core": "~1.15.5",
     "@swc/helpers": "~0.5.18",
+    "commitlint": "^20.5.0",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^9.1.7",
     "nx": "22.6.5",
