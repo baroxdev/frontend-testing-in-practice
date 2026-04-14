@@ -1,0 +1,25 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "statusMessage": "Loading session context...",
+            "command": "PROGRESS=\"/Users/admin/Learning/front-end/testing/practical-testing/PROGRESS.md\"; MEMORY=\"/Users/admin/.claude/projects/-Users-admin-Learning-front-end-testing-practical-testing/memory/session_progress.md\"; content=\"\"; [ -f \"$PROGRESS\" ] && content+=\"=== PROGRESS.md ===\\n$(cat \"$PROGRESS\")\"; [ -f \"$MEMORY\" ] && content+=\"\\n\\n=== Session Memory ===\\n$(cat \"$MEMORY\")\"; [ -n \"$content\" ] && printf '%s' \"$content\" | jq -Rs '{\"hookSpecificOutput\":{\"hookEventName\":\"SessionStart\",\"additionalContext\":.}}' || echo '{}'"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"systemMessage\":\"Session ended. If you completed work today, update PROGRESS.md and session memory — tell Claude: wrap up this session.\"}'"
+          }
+        ]
+      }
+    ]
+  }
+}

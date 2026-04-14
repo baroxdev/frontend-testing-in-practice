@@ -51,4 +51,14 @@ If you're here from a job application or just learning frontend testing yourself
 - The test files show the progression from basic assertions to full E2E scenarios
 - Feel free to fork and use any app as a practice target
 
+### Want to practice yourself?
+
+Fork this repo, open it in [Claude Code](https://claude.ai/code), and run:
+
+```
+/onboard
+```
+
+Claude will ask about your background and goals, then generate a personalized roadmap with app ideas matched to your level — from writing your first unit test to building full E2E suites.
+
 Built with [Nx](https://nx.dev) · TypeScript · Vitest · Testing Library · Playwright

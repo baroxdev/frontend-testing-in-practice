@@ -2,19 +2,32 @@
   "name": "@practical-testing/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "prepare": "husky"
+  },
   "private": true,
-  "dependencies": {},
   "devDependencies": {
     "@nx/js": "22.6.5",
     "@swc-node/register": "~1.11.1",
     "@swc/core": "~1.15.5",
     "@swc/helpers": "~0.5.18",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^9.1.7",
     "nx": "22.6.5",
     "tslib": "^2.3.0",
     "typescript": "~5.9.2"
   },
   "workspaces": [
     "apps/*"
-  ]
+  ],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && npx cz --hook || true"
+    }
+  }
 }
