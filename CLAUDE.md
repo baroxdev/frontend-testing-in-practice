@@ -6,37 +6,81 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Frontend testing in practice** — an Nx monorepo of sample frontend projects ordered from simple to complex, each purpose-built for hands-on testing practice across all levels: unit, integration, and E2E. The repo is public on GitHub as a portfolio piece and reference for others learning frontend testing.
 
-Each package under `packages/` is a self-contained sample project. They are added progressively — from a plain utility function all the way to a full frontend app — so that testing concepts build on each other. All packages live under `packages/` and are managed via npm workspaces. The workspace currently has no packages — they are added via Nx generators.
+Each app under `apps/` is a self-contained sample project. They progress from framework-agnostic TypeScript all the way to full frontend apps with browser-level E2E tests.
+
+---
+
+## Collaboration Rules
+
+**Claude's role (per app):**
+- Scaffold a realistic, purposeful sample app
+- Write a `README.md` inside the app describing: what the app does, which testing level it targets, and hints on *what* to test (not *how*)
+- Leave all test files absent or as empty stubs — the user writes them
+
+**User's role:**
+- Write all tests from scratch against the scaffolded app
+- Target ≥ 80% coverage on unit and integration apps
+- Commit tests separately from app code when possible
+
+**Review loop:**
+- User asks Claude to review → Claude reads test files and gives structured feedback on: coverage gaps, test isolation, assertion quality, and naming
+
+---
+
+## Testing Levels
+
+Full reference: [`docs/testing-levels.md`](docs/testing-levels.md) — treat it as the source of truth.
+
+| # | Level | Scope |
+|---|-------|-------|
+| 1 | Unit | Pure functions, utilities, custom hooks |
+| 2 | Component | Rendering, user events, accessibility |
+| 3 | Integration | Network, API contracts, wired-up features |
+| 4 | E2E | Full browser user flows |
+| 5 | Visual regression | Screenshot diffs vs baseline |
+| 6 | Accessibility | ARIA, keyboard, labels, screen reader |
+| 7 | Performance | Bundle size, Core Web Vitals |
+
+Tools are **not locked** — each app chooses its own. Test runner is decided per app.
+
+---
+
+## App Progression
+
+Apps are numbered and named in `apps/`. Start with low numbers when exploring unfamiliar testing concepts. Each app's own `README.md` is the source of truth for what to test.
+
+---
 
 ## Key Commands
 
-### Nx Tasks (run per package)
+### Per app
 ```sh
-npx nx build <pkg-name>       # Build a package (emits .d.ts only, no JS)
-npx nx typecheck <pkg-name>   # Type-check a package
-npx nx test <pkg-name>        # Run tests for a package
-npx nx <target> <pkg-name>    # Run any inferred or defined target
+npx nx test <app-name>        # Run tests
+npx nx build <app-name>       # Build
+npx nx typecheck <app-name>   # Type-check
 ```
 
-### Workspace-wide
+### Workspace
 ```sh
-npx nx graph                  # Visualize project/task dependency graph
+npx nx run-many -t test       # Test all apps
+npx nx graph                  # Visualize dependency graph
 npx nx sync                   # Sync TypeScript project references
-npx nx release                # Version and release packages
 ```
 
-### Generating new packages
+### Generate a new app
 ```sh
-npx nx g @nx/js:lib packages/<name> --publishable --importPath=@practical-testing/<name>
+npx nx g @nx/js:lib apps/<name> --publishable --importPath=@practical-testing/<name>
 ```
+
+---
 
 ## Architecture
 
-- **Monorepo tool**: Nx 22.6.5 with the `@nx/js/typescript` plugin (tasks inferred automatically)
-- **Compiler**: SWC (`@swc-node/register` / `@swc/core`) — no `tsc` emit, declaration-only output
-- **Module system**: `"module": "nodenext"` / `"moduleResolution": "nodenext"` — use `.js` extensions in imports even for `.ts` source files
-- **Custom condition**: `@practical-testing/source` — package exports can expose source entry points under this condition for in-repo consumption
-- **TypeScript strictness**: `strict`, `noUnusedLocals`, `noImplicitReturns`, `noImplicitOverride`, `noFallthroughCasesInSwitch` all enabled
-- **Build output**: `emitDeclarationOnly: true` — packages emit only `.d.ts` + `declarationMap` files; runtime code is run directly via SWC
+- **Monorepo tool**: Nx 22.6.5 with `@nx/js/typescript` plugin (tasks auto-inferred)
+- **Compiler**: SWC (`@swc-node/register` / `@swc/core`) — declaration-only emit
+- **Module system**: `"module": "nodenext"` / `"moduleResolution": "nodenext"` — use `.js` extensions in imports for `.ts` source files
+- **Custom condition**: `@practical-testing/source` — exposes source entry points for in-repo consumption
+- **TypeScript**: `strict`, `noUnusedLocals`, `noImplicitReturns`, `noImplicitOverride`, `noFallthroughCasesInSwitch` all enabled
+- **Build output**: `emitDeclarationOnly: true` — only `.d.ts` + `declarationMap` emitted; runtime run via SWC
 
-Each package under `packages/` has its own `tsconfig.json`, `tsconfig.lib.json`, and optionally `project.json` for non-inferred targets. Nx automatically maintains `tsconfig.json` references across packages.
+Each app has its own `tsconfig.json`, `tsconfig.lib.json`, and optionally `project.json` for non-inferred targets. Nx auto-maintains `tsconfig.json` project references.
