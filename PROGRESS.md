@@ -8,7 +8,7 @@ App 02 — `slugify` (Level 1, Unit, simple) — next up
 
 | # | Name | Level | Status | Notes |
 |---|------|-------|--------|-------|
-| 01 | format-currency | Unit (1) | `complete` | 32 tests green, all FRs + ERs covered, naming reviewed |
+| 01 | 001-unit-test-format-currency | Unit (1) | `complete` | 32 tests green, all FRs + ERs covered, naming reviewed |
 | 02 | slugify | Unit (1) | `planned` | — |
 
 **Status legend:** `scaffolded` · `in-progress` · `tests-written` · `reviewed` · `complete`

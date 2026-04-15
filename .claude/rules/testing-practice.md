@@ -75,8 +75,8 @@ The file `~/.claude/projects/-Users-admin-Learning-front-end-testing-practical-t
 number,name,level,level_name,complexity,scenario,domain,status,date_added
 ```
 
-- `number`: zero-padded sequence (`01`, `02`, …)
-- `name`: kebab-case short name (`cart-pricing`)
+- `number`: zero-padded 3-digit sequence (`001`, `002`, …)
+- `name`: kebab-case short name including level slug (`unit-test-cart-pricing`)
 - `level`: integer 1–7
 - `level_name`: `Unit` / `Component` / `Integration` / `E2E` / `Visual` / `a11y` / `Performance`
 - `complexity`: `simple` / `medium` / `complex` — difficulty within the level
@@ -140,7 +140,7 @@ When asked to scaffold a new sample app:
 
 1. **Read the roadmap CSV** — confirm no duplicate domain/scenario exists at this level; confirm level progression is valid
 2. **Agree on the scenario first** — confirm the app concept and testing level with the user before writing any code
-3. **Create the app under `apps/<name>/`** using the naming convention: `<number>-<short-description>` (e.g. `01-cart-pricing`, `02-user-search`)
+3. **Create the app under `apps/<name>/`** using the naming convention: `<number>-<level-slug>-<short-description>` (e.g. `001-unit-test-format-currency`, `002-unit-test-slugify`). Level slugs: `unit-test`, `component-test`, `integration-test`, `e2e-test`, `visual-test`, `a11y-test`, `performance-test`
 4. **Scaffold the app source code only.** The following must be completely absent:
    - Test files (`.test.ts`, `.spec.ts`, etc.)
    - Test runner config (`vitest.config.ts`, `jest.config.ts`, `playwright.config.ts`, etc.)
