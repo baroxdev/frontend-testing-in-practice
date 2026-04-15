@@ -29,9 +29,10 @@ The twist: **the apps come without tests**. Writing them is the whole point.
 
 ## Apps
 
-| App             | Level | Description |
-| --------------- | ----- | ----------- |
-| _(coming soon)_ |       |             |
+| App                                          | Level      | Status     | Description                                                         |
+| -------------------------------------------- | ---------- | ---------- | ------------------------------------------------------------------- |
+| [01-format-currency](apps/01-format-currency) | Unit (1)   | `complete` | Format monetary values with locale, symbol, and negative notation   |
+| [02-slugify](apps/02-slugify)                 | Unit (1)   | `planned`  | Convert arbitrary text to a URL-safe slug                           |
 
 Apps progress from framework-agnostic TypeScript → React components → API-integrated features → E2E flows. Each app's `README.md` explains what it does and what to test.
 

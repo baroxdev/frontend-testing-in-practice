@@ -2,13 +2,14 @@
 
 ## Current Focus
 
-App 01 — `format-currency` (Level 1, Unit, simple) — scaffolded, ready for tests
+App 02 — `slugify` (Level 1, Unit, simple) — next up
 
 ## Apps
 
 | # | Name | Level | Status | Notes |
 |---|------|-------|--------|-------|
-| 01 | format-currency | Unit (1) | `in-progress` | 23 tests green, FR-1–FR-4 + ER-1–ER-2 done, FR-5–FR-7 remaining |
+| 01 | format-currency | Unit (1) | `complete` | 32 tests green, all FRs + ERs covered, naming reviewed |
+| 02 | slugify | Unit (1) | `planned` | — |
 
 **Status legend:** `scaffolded` · `in-progress` · `tests-written` · `reviewed` · `complete`
 
@@ -18,10 +19,9 @@ App 01 — `format-currency` (Level 1, Unit, simple) — scaffolded, ready for t
 |------|--------------|
 | 2026-04-14 | Repo setup: folder structure, rules, testing-levels reference, hooks, session memory system |
 | 2026-04-14 | Onboarding complete: 35-app roadmap generated; App 01 scaffolded and tests started (23 passing, FR-1–FR-4 + errors covered) |
+| 2026-04-15 | App 01 complete: finished FR-5–FR-7, split EUR test, reviewed naming style (behaviour vs description), 32 tests green |
 
 ## Next Session
 
-- Complete App 01: write FR-5 (showSymbol), FR-6 (fraction overrides), FR-7 (locale variation)
-- Split EUR test into two separate tests (symbol position + separator format)
-- Review + mark App 01 complete
-- Scaffold App 02 (`slugify`) once App 01 is complete
+- Scaffold App 02 (`slugify`) — Level 1, Unit, simple, domain: content
+- User sets up Vitest from scratch and writes tests
