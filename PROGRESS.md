@@ -2,14 +2,14 @@
 
 ## Current Focus
 
-App 02 — `slugify` (Level 1, Unit, simple) — next up
+App 02 — `002-unit-test-slugify` (Level 1, Unit, simple) — scaffolded, ready for tests
 
 ## Apps
 
 | # | Name | Level | Status | Notes |
 |---|------|-------|--------|-------|
 | 01 | 001-unit-test-format-currency | Unit (1) | `complete` | 32 tests green, all FRs + ERs covered, naming reviewed |
-| 02 | slugify | Unit (1) | `planned` | — |
+| 02 | 002-unit-test-slugify | Unit (1) | `scaffolded` | — |
 
 **Status legend:** `scaffolded` · `in-progress` · `tests-written` · `reviewed` · `complete`
 
@@ -23,5 +23,5 @@ App 02 — `slugify` (Level 1, Unit, simple) — next up
 
 ## Next Session
 
-- Scaffold App 02 (`slugify`) — Level 1, Unit, simple, domain: content
-- User sets up Vitest from scratch and writes tests
+- Set up test runner for App 02 from scratch
+- Write tests for `slugify` covering all scenarios in the README
